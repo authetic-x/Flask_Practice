@@ -1,0 +1,57 @@
+body {
+    width: auto;
+    margin: auto;
+}
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+nav li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+}
+main {
+    padding: 40px 60px;
+}
+
+.alert{
+    position: relative;
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: pink;
+    background: whitesmoke;
+    border-color: whitesmoke;
+}
+
+.note p{
+    padding: 10px;
+    border-left: solid 2px #bbb;
+}
+
+.btn {
+    font-family: Arial;
+    font-size: 14px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border:none;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.btn:hover {
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
