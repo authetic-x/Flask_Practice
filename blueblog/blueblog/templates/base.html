@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+        shrink-to-fit=no">
+    <title>{% block title %}Blueblog{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='') }}">
+    {% endblock %}
+</head>
+<body>
+    {% block nav %}
+    {% endblock %}
+
+    <main class="container">
+        {% block content %}{% endblock %}
+        {% block footer %}
+        {% endblock %}
+    </main>
+
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
