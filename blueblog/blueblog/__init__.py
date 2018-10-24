@@ -1,6 +1,8 @@
 from flask import Flask, render_template
 from blueblog.settings import config
 from blueblog.extensions import bootstrap, db, moment, ckeditor, mail
+from blueblog.models import Admin, Category
+from blueblog.blueprints.blog import blog_bp
 
 import os
 import click
@@ -35,7 +37,7 @@ def register_extensions(app):
     mail.init_app(app)
 
 def register_blueprints(app):
-    pass
+    app.register_blueprint(blog_bp)
 
 def register_shell_context(app):
 
@@ -44,7 +46,11 @@ def register_shell_context(app):
         return dict(db=db)
 
 def register_template_context(app):
-    pass
+    @app.context_processor
+    def make_template_context():
+        admin = Admin.query.first()
+        categories = Category.query.order_by(Category.name).all()
+        return dict(admin=admin, categories=categories)
 
 def register_errors(app):
 
