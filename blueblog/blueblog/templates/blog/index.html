@@ -1,34 +1,21 @@
 {% extends 'base.html' %}
 {% from 'bootstrap/pagination.html' import render_pager %}
 
-{% block content %}
-    {% if posts %}
-    {% for post in posts %}
-        <h3 class="text-primary"><a href="{{ url_for('.show_post', post_id=post.id) }}">{{ post.title }}</a> </h3>
-        <p>
-            {{ post.body|striptags|truncate }}
-            <small><a href="{{ url_for('.show_post', post_id=post.id) }}">Read More</a> </small>
-        </p>
-        <small>
-            Comments:<a href="{{ url_for('.show_post', post_id=post.id) }}#comments">
-            {{ comments|length }}
-        </a>&nbsp;&nbsp;
-        Category:<a href="{{ url_for('.show_category', category_id=post.category.id) }}">
-            {{ post.category.name }}
-        </a>
-        <span class="float-right">{{ moment(post.timestamp).format('LL') }}</span>
-        </small>
-        {% if not loop.last %}
-            <hr>
-        {% endif %}
-    {% endfor %}
-    <div class="page-footer">
-        {{ render_pager(pagination) }}
-    </div>
-{% else %}
-    <div class="tip">
-        <h5>No post yet.</h5>
+{% block title %}
+    Home
+{% endblock %}
 
+{% block content %}
+    <div class="page-header">
+        <h1 class="display-3">Authetic</h1>
+        <h4 class="text-muted">&nbsp;Hello, passenger</h4>
     </div>
-{% endif %}
+    <div class="row">
+        <div class="col-sm-8">
+            {% include 'blog/_post.html' %}
+        </div>
+        <div class="col-sm-4 sidebar">
+            {% include 'blog/_sidebar.html' %}
+        </div>
+    </div>
 {% endblock %}

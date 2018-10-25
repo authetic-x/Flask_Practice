@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from blueblog.settings import config
-from blueblog.extensions import bootstrap, db, moment, ckeditor, mail
+from blueblog.extensions import bootstrap, db, moment, ckeditor,\
+    mail, login_manager
 from blueblog.models import Admin, Category
 from blueblog.blueprints.blog import blog_bp
 
@@ -35,6 +36,7 @@ def register_extensions(app):
     moment.init_app(app)
     ckeditor.init_app(app)
     mail.init_app(app)
+    login_manager.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(blog_bp)
