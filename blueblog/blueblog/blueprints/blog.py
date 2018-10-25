@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template, request, current_app, url_for, \
-    flash, redirect
+    flash, redirect, abort, make_response
 from flask_login import current_user
 from blueblog.models import Post, Category, Comment
 from blueblog.forms import AdminCommentForm, CommentForm
 from blueblog.extensions import db
 from blueblog.emails import send_new_commment_email
+from blueblog.utils import redirect_back
 
 
 blog_bp = Blueprint('blog', __name__)
@@ -89,3 +90,11 @@ def reply_comment(comment_id):
     comment = Comment.query.get_or_404(comment_id)
     return redirect(url_for('.show_post', post_id=comment.post_id, reply=comment_id,
                             author=comment.author) + '#comment-form')
+
+@blog_bp.route('/change-theme/<theme_name>')
+def change_theme(theme_name):
+    if theme_name not in current_app.config['BLUE_THEMES'].keys():
+        abort(404)
+    response = make_response(redirect_back())
+    response.set_cookie('theme', theme_name, max_age=30 * 24 * 60 * 60)
+    return response
