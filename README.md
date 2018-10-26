@@ -6,9 +6,9 @@ Developing...
 
 ##  Projects
 
-    - [x] Sayhello
-    - []  Blueblog
-    - []  Albumy
-    - []  TODO
-    - []  Chat-online
-    - []  ...
+ - [x] Sayhello
+ - []  Blueblog
+ - []  Albumy
+ - []  TODO
+ - []  Chat-online
+ - []  ...
