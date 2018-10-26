@@ -4,6 +4,7 @@ from flask_mail import Mail
 from flask_ckeditor import CKEditor
 from flask_moment import Moment
 from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect
 
 
 bootstrap = Bootstrap()
@@ -12,7 +13,9 @@ moment = Moment()
 ckeditor = CKEditor()
 mail = Mail()
 login_manager = LoginManager()
+csrf = CSRFProtect()
 
+# 返回对象给current_user
 @login_manager.user_loader
 def load_user(user_id):
     from blueblog.models import Admin
