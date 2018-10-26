@@ -7,8 +7,8 @@ Developing...
 ##  Projects
 
  - [x] Sayhello
- - []  Blueblog
- - []  Albumy
- - []  TODO
- - []  Chat-online
- - []  ...
+ - [ ]  Blueblog
+ - [ ]  Albumy
+ - [ ]  TODO
+ - [ ]  Chat-online
+ - [ ]  ...
