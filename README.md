@@ -7,8 +7,14 @@ Developing...
 ##  Projects
 
  - [x] Sayhello
- - [ ]  Blueblog
+ - [x]  Blueblog
  - [ ]  Albumy
  - [ ]  TODO
  - [ ]  Chat-online
  - [ ]  ...
+ - [ ]  
+
+##  项目地址
+
+- [SayHello](# sayhello)
+- [BlueBlog](# blueblog)
