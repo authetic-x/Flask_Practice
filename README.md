@@ -15,5 +15,5 @@ Developing...
 
 ##  项目地址
 
-- [SayHello](./sayhello)
-- [BlueBlog](./blueblog)
+- [SayHello](/SayHello/sayhello)
+- [BlueBlog](/blueblog/blueblog)
