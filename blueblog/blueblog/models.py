@@ -25,12 +25,21 @@ class Category(db.Model):
     name = db.Column(db.String(30), unique=True)
     posts = db.relationship('Post', back_populates='category')
 
+    def delete(self):
+        default_category = Category.query.get(1)
+        posts = self.posts[:]
+        for post in posts:
+            post.category = default_category
+        db.session.delete(self)
+        db.session.commit()
+
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60))
     body = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    can_comment = db.Column(db.Boolean, default=True)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     category = db.relationship('Category', back_populates='posts')
     comments = db.relationship('Comment', back_populates='post', cascade='all')
@@ -47,6 +56,8 @@ class Comment(db.Model):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     post = db.relationship('Post', back_populates='comments')
+    # 评论的回复对象
     replied_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
     replied = db.relationship('Comment', back_populates='replies', remote_side=[id])
+    # 评论的回复
     replies = db.relationship('Comment', back_populates='replied', cascade='all')
