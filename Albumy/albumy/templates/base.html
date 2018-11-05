@@ -5,6 +5,86 @@
     <title>Title</title>
 </head>
 <body>
+    {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="{{ url_for('main.index') }}">
+                  <img src="{{ url_for('static', filename='favicon.ico') }}" alt="Albumy">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav mr-auto">
+                    <ul>
+                      <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('main.index') }}">Home <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('main.explore') }}">Explore</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">About</a>
+                      </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" action="{{ url_for('main.search') }}">
+                      <input class="form-control mr-sm-1" type="search" placeholder="Photo, tag or user" required aria-label="Search">
+                      <button class="btn btn-light my-2 my-sm-0" type="submit">
+                        <span class="oi oi-magnifying-glass"></span>
+                      </button>
+                    </form>
+                </div>
+                <div class="navbar-nav ml-auto">
+                    {% if current_user.is_authenticated %}
+                    {% else %}
+                        <a class="btn btn-outline-primary" href="{{ url_for('auth.login') }}">Log in</a>&nbsp;&nbsp;
+                        <a class="btn btn-primary" href="{{ url_for('auth.register') }}">Join Albumy</a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+        </nav>
+    {% endblock %}
+    <main>
+        <div class="container">
+            {% for message in get_flashed_messages(with_categories=True) %}
+                <div class="alert alert-{{ message[0] }}">
+                    <button class="close" type="button" data-dismiss="alert">&times;</button>
+                    {{ message[1] }}
+                </div>
+            {% endfor %}
+            {% block content %}
+            {% endblock %}
+            {% block footer %}
+                <footer>
+                    <p class="float-left">
+                        <small>&copy;2018
+                            <a href="https://cnblogs/authetic">authetic</a>
+                            <a href="https://github.com/authetic-x" title="Follow me on Github">Github</a>
+                        </small>
+                    </p>
+                    <p class="float-right">
+                        <small>Capture and share every wonderful moment.</small>
+                    </p>
+                </footer>
+            {% endblock %}
+        </div>
+    </main>
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+        {{ moment.include_moment(local_js=url_for('static', filename='js/moment-with-locales.min.js')) }}
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        <script type="text/javascript">
+            var csrf_token = {{ csrf_token }};
+            {% if current_user.is_authenticated %}
+                var is_authenticated = true;
+            {% else %}
+                var is_authenticated = false;
+            {% endif %}
+        </script>
+    {% endblock %}
 </body>
 </html>
