@@ -2,7 +2,7 @@
 import os
 
 import click
-from flask import Flask, render_template
+from flask import Flask
 from flask_login import current_user
 from flask_wtf.csrf import CSRFError
 
@@ -24,7 +24,7 @@ def create_app(config_name=None):
     register_extensions(app)
     register_blueprints(app)
     register_shell_context(app)
-    register_template_context(app)
+    #register_template_context(app)
     register_errorhandlers(app)
     register_commands(app)
 
@@ -48,11 +48,13 @@ def register_shell_context(app):
     def make_shell_context():
         return dict(db=db)
 
+'''
 def register_template_context(app):
     @app.context_processor
     def make_template_context():
         if current_user.is_authenticated:
             pass
+'''
 
 def register_errorhandlers(app):
     pass
