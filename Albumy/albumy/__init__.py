@@ -8,7 +8,9 @@ from flask_wtf.csrf import CSRFError
 
 from albumy.blueprints.auth import auth_bp
 from albumy.blueprints.main import main_bp
-from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail, dropzone
+from albumy.blueprints.user import user_bp
+from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail,\
+                dropzone, avatars
 from albumy.settings import config
 from albumy.models import User, Role
 
@@ -39,10 +41,12 @@ def register_extensions(app):
     mail.init_app(app)
     login_manager.init_app(app)
     dropzone.init_app(app)
+    avatars.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(user_bp, url_prefix='/user')
 
 def register_shell_context(app):
     @app.shell_context_processor

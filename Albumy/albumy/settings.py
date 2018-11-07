@@ -43,6 +43,9 @@ class BaseConfig:
         ALBUMY_PHOTO_SIZE['medium']:'_m'
     }
 
+    AVATARS_SAVE_PATH = os.path.join(ALBUMY_UPLOAD_PATH, 'avatars')
+    AVATAR_SIZE_TUPLE = (30, 100 ,200)
+
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = \

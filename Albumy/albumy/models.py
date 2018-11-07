@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import current_app
 from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_avatars import Identicon
 
 from albumy.extensions import db
 
@@ -25,6 +26,9 @@ class User(db.Model, UserMixin):
     location = db.Column(db.String(50))
     member_since = db.Column(db.DateTime, default=datetime.utcnow)
     confirmed = db.Column(db.Boolean, default=False)
+    avatar_s = db.Column(db.String(64))
+    avatar_m = db.Column(db.String(64))
+    avatar_l = db.Column(db.String(64))
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     role = db.relationship('Role', back_populates='users')
@@ -34,6 +38,7 @@ class User(db.Model, UserMixin):
         super(User, self).__init__()
 
         self.set_role()
+        self.generate_avatar()
 
     def set_role(self):
         if self.role is None:
@@ -42,6 +47,14 @@ class User(db.Model, UserMixin):
             else:
                 self.role = Role.query.filter_by(name='User').first()
             db.session.commit()
+
+    def generate_avatar(self):
+        avatar = Identicon()
+        filenames = avatar.generate(text=self.userName)
+        self.avatar_s = filenames[0]
+        self.avatar_m = filenames[1]
+        self.avatar_l = filenames[2]
+        db.session.commit()
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

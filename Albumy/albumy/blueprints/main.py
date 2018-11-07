@@ -3,7 +3,7 @@
 import os
 
 from flask import url_for, render_template, redirect, Blueprint, request, \
-                    current_app
+                    current_app, send_from_directory
 from flask_login import login_required, current_user
 from flask_dropzone import random_filename
 
@@ -19,6 +19,7 @@ main_bp = Blueprint('main', __name__)
 @main_bp.route('/')
 def index():
     return render_template('macros.html')
+
 
 @main_bp.route('/upload', methods=['GTE', 'POST'])
 @login_required
@@ -40,3 +41,11 @@ def upload():
         db.session.add(photo)
         db.session.commit()
     return render_template('main/upload.html')
+
+@main_bp.route('/avatars/<path:filename>')
+def get_avatar(filename):
+    return send_from_directory(current_app.config['AVATARS_SAVE_PATH'], filename)
+
+@main_bp.route('/uploads/<path:filename>')
+def get_image(filename):
+    return send_from_directory(current_app.config['ALBUMY_UPLOAD_PATH'], filename)
