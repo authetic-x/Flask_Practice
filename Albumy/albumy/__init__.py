@@ -8,9 +8,9 @@ from flask_wtf.csrf import CSRFError
 
 from albumy.blueprints.auth import auth_bp
 from albumy.blueprints.main import main_bp
-from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail
+from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail, dropzone
 from albumy.settings import config
-from albumy.models import User
+from albumy.models import User, Role
 
 
 def create_app(config_name=None):
@@ -38,6 +38,7 @@ def register_extensions(app):
     csrf.init_app(app)
     mail.init_app(app)
     login_manager.init_app(app)
+    dropzone.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)
@@ -75,8 +76,11 @@ def register_commands(app):
     @app.cli.command()
     def init():
         """Initialize the Albumy"""
-        click.echo('Initializing the database.')
+        click.echo('Initializing the database...')
         db.create_all()
+
+        click.echo('Initializing the roles and permissions...')
+        Role.init_role()
 
         click.echo('Done.')
 

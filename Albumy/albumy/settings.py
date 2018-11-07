@@ -29,7 +29,14 @@ class BaseConfig:
     MAIL_PORT = 465
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
-    MAIL_DEFAULT_SENDER = os.getenv('Albumy Admin', MAIL_USERNAME)
+    MAIL_DEFAULT_SENDER = os.getenv('Albumy_Admin', MAIL_USERNAME)
+
+    DROPZONE_MAX_FILE_SIZE = 3
+    DROPZONE_MAX_FILES = 30
+    DROPZONE_ALLOWED_FILE_TYPE = 'image'
+    DROPZONE_ENABLE_CSRF = True
+
+    ALBUMY_UPLOAD_PATH = os.path.join(basedir, 'uploads')
 
 
 class DevelopmentConfig(BaseConfig):

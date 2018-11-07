@@ -6,7 +6,7 @@ from albumy.settings import Operations
 from albumy.emails import send_confirm_email, send_reset_password_email
 from albumy.extensions import db
 from albumy.models import User
-from albumy.forms.auth import RegisterForm, LoginForm, ForgetPasswordForm
+from albumy.forms.auth import RegisterForm, LoginForm, ForgetPasswordForm, ResetPasswordForm
 from albumy.utils import generate_token, validate_token, redirect_back
 
 
@@ -93,4 +93,23 @@ def forget_password():
             return redirect(url_for('.login'))
         flash('Invalid email.', 'warning')
         return redirect(url_for('.forget_password'))
+    return render_template('auth/reset_password.html', form=form)
+
+@auth_bp.route('/reset-password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data.lower()).first()
+        if user is None:
+            return url_for('main.index')
+        if validate_token(user=user, token=token, operation=Operations.RESET_PASSWORD,
+                          new_password=form.password.data):
+            flash('Password updated.', 'success')
+            return redirect('.login')
+        else:
+            flash('Invalid or expired token.', 'danger')
+            return redirect(url_for('.forget_password'))
     return render_template('auth/reset_password.html', form=form)
