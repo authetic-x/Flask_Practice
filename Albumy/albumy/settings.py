@@ -37,6 +37,11 @@ class BaseConfig:
     DROPZONE_ENABLE_CSRF = True
 
     ALBUMY_UPLOAD_PATH = os.path.join(basedir, 'uploads')
+    ALBUMY_PHOTO_SIZE = {'small':400, 'medium':800}
+    ALBUMY_PHOTO_SUFFIX = {
+        ALBUMY_PHOTO_SIZE['small']:'_s',
+        ALBUMY_PHOTO_SIZE['medium']:'_m'
+    }
 
 
 class DevelopmentConfig(BaseConfig):

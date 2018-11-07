@@ -94,10 +94,12 @@ class Permission(db.Model):
 
     roles = db.relationship('Role', secondary=roles_permissions, back_populates='permissions')
 
-class photo(db.Model):
+class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(500))
     filename = db.Column(db.String(64))
+    filename_s = db.Column(db.String(64))
+    filename_m = db.Column(db.String(64))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
