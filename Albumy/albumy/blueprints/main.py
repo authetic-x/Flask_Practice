@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 from flask_dropzone import random_filename
 
 from albumy.decorators import confirm_required, permission_required, admin_required
-from albumy.models import Photo, Tag
+from albumy.models import Photo, Tag, Collect, User
 from albumy.extensions import db
 from albumy.utils import resize_image, flash_errors
 from albumy.forms.main import DescriptionForm, TagForm
@@ -177,3 +177,38 @@ def show_tag(tag_id, order):
         order_rule = 'collects'
     return render_template('main/tag.html', tag=tag, pagination=pagination, photos=photos, order_rule=
                            order_rule)
+
+@main_bp.route('/collect/<int:photo_id>', methods=['POST'])
+@login_required
+@confirm_required
+@permission_required('COLLECT')
+def collect(photo_id):
+    photo = Photo.query.get_or_404(photo_id)
+    if current_user.is_collecting(photo):
+        flash('Already collected.', 'info')
+        return redirect(url_for('.show_photo', photo_id=photo_id))
+    current_user.collect(photo)
+    flash('Photo collected.', 'success')
+    return redirect(url_for('.show_photo', photo_id=photo_id))
+
+@main_bp.route('/uncollect/<int:photo_id>', methods=['POST'])
+@login_required
+def uncollect(photo_id):
+    photo = Photo.query.get_or_404(photo_id)
+    if not current_user.is_collecting(photo):
+        flash('Not collect yet.', 'info')
+        return redirect(url_for('.show_photo', photo_id=photo_id))
+    current_user.uncollect(photo)
+    flash('Photo uncollected.', 'success')
+    return redirect(url_for('.show_photo', photo_id=photo_id))
+
+@main_bp.route('/photo/<int:photo_id>/collectors')
+def show_collectors(photo_id):
+    photo = Photo.query.get_or_404(photo_id)
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['ALBUMY_USER_PER_PAGE']
+    pagination = Collect.query.with_parent(photo).order_by(Collect.timestamp.asc()).pagination(
+                                                page, per_page)
+    collects = pagination.items
+    return render_template('main/collectors.html', collects=collects, photo=photo, pagination=pagination)
+

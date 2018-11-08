@@ -38,6 +38,7 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     role = db.relationship('Role', back_populates='users')
     photos = db.relationship('Photo', back_populates='author', cascade='all')
+    collections = db.relationship('Collect', back_populates='collector', cascade='all')
 
     def __init__(self, **kwargs):
         super(User, self).__init__()
@@ -75,6 +76,21 @@ class User(db.Model, UserMixin):
         permission = Permission.query.filter_by(name=permission_name).first()
         return permission is not None and self.role is not None and \
                 permission in self.role.permissions
+
+    def collect(self, photo):
+        if not self.is_collecting(photo):
+            collect = Collect(collector=self, collected=photo)
+            db.session.add(collect)
+            db.session.commit()
+
+    def uncollect(self, photo):
+        collect = self.collections.filter_by(collected_id=photo.id).first()
+        if collect:
+            db.session.delete(collect)
+            db.session.commit()
+
+    def is_collecting(self, photo):
+        return self.collections.filter_by(collected_id=photo.id).first() is not None
 
 class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -124,12 +140,21 @@ class Photo(db.Model):
 
     author = db.relationship('User', back_populates='photos')
     tags = db.relationship('Tag', secondary=tagging, back_populates='photos')
+    collectors = db.relationship('Collect', back_populates='collected', cascade='all')
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), index=True)
 
     photos = db.relationship('Photo', secondary=tagging, back_populates='tags')
+
+class Collect(db.Model):
+    collector_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    collected_id = db.Column(db.Integer, db.ForeignKey('photo.id'), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    collector = db.relationship('User', back_populates='collections', lazy='joined')
+    collected = db.relationship('Photo', back_populates='collectors', lazy='joined')
 
 @db.event.listens_for(Photo, 'after_delete', named=True)
 def delete_photos(**kwargs):
