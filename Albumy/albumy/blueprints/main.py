@@ -8,10 +8,10 @@ from flask_login import login_required, current_user
 from flask_dropzone import random_filename
 
 from albumy.decorators import confirm_required, permission_required, admin_required
-from albumy.models import Photo
+from albumy.models import Photo, Tag
 from albumy.extensions import db
 from albumy.utils import resize_image, flash_errors
-from albumy.forms.main import DescriptionForm
+from albumy.forms.main import DescriptionForm, TagForm
 
 
 main_bp = Blueprint('main', __name__)
@@ -51,7 +51,7 @@ def get_avatar(filename):
 def get_image(filename):
     return send_from_directory(current_app.config['ALBUMY_UPLOAD_PATH'], filename)
 
-@main_bp.route('/photo<int:photo_id>')
+@main_bp.route('/photo/<int:photo_id>')
 def show_photo(photo_id):
     photo = Photo.query.get_or_404(photo_id)
     description_form = DescriptionForm()
@@ -123,3 +123,57 @@ def edit_description(photo_id):
         flash('Description updated.', 'success')
         flash_errors(form)
         return redirect(url_for('.show_post', photo_id=photo_id))
+
+@main_bp.route('/photo/<int:photo_id>/tag/new', methods=['POST'])
+@login_required
+def new_tag(photo_id):
+    photo = Photo.query.get_or_404(photo_id)
+    if current_user != photo.author:
+        abort(403)
+
+    form = TagForm()
+    if form.validate_on_submit():
+        for name in form.tag.data.split():
+            tag = Tag.query.filter_by(name=name).first()
+            if tag is None:
+                tag = Tag(name=name)
+                db.session.add(tag)
+                db.session.commit()
+            if tag not in photo.tags:
+                photo.tags.append(tag)
+                db.session.commit()
+        flash('Tag added', 'success')
+    flash_errors(form)
+    return redirect(url_for('.show_photo', photo_id=photo_id))
+
+@main_bp.route('/delete/tag/<int:photo_id>/<int:tag_id>', methods=['POST'])
+@login_required
+def delete_tag(photo_id, tag_id):
+    photo = Photo.query.get_or_404(photo_id)
+    tag = Tag.query.get_or_404(tag_id)
+    if current_user != photo.author:
+        abort(403)
+    photo.tags.remove(tag)
+    db.session.commit()
+
+    if not tag.photos:
+        db.session.delete(tag)
+        db.session.commit()
+    flash('Tag deleted', 'info')
+    return redirect(url_for('.show_photo', photo_id=photo_id))
+
+@main_bp.route('/tag/<int:tag_id>', defaults={'order':'by_time'})
+@main_bp.route('/tag/<int:tag_id>/<order>')
+def show_tag(tag_id, order):
+    tag = Tag.query.get_or_404(tag_id)
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['ALBUMY_PHOTO_PER_PAGE']
+    order_rule = 'time'
+    pagination = Photo.query.with_parent(tag).order_by(Photo.timestamp.desc()).paginate(page, per_page)
+    photos = pagination.items
+
+    if order == 'by_collects':
+        photos.sort(key=lambda x:len(x.collectors), reverse=True)
+        order_rule = 'collects'
+    return render_template('main/tag.html', tag=tag, pagination=pagination, photos=photos, order_rule=
+                           order_rule)
