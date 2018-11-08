@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 
 from flask import current_app
 from flask_login import UserMixin, AnonymousUserMixin
@@ -13,6 +14,10 @@ roles_permissions = db.Table(
     'role_permissions',
     db.Column('role_id', db.Integer, db.ForeignKey('role.id')),
     db.Column('permission_id', db.Integer, db.ForeignKey('permission.id'))
+)
+tagging = db.Table(
+    db.Column('photo_id', db.Integer, db.ForeignKey('photo.id')),
+    db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
 )
 
 class User(db.Model, UserMixin):
@@ -114,7 +119,23 @@ class Photo(db.Model):
     filename_s = db.Column(db.String(64))
     filename_m = db.Column(db.String(64))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-
+    flag = db.Column(db.Integer, default=0)
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    author = db.relationship('User', back_populates='photos')
 
+    author = db.relationship('User', back_populates='photos')
+    tags = db.relationship('Tag', secondary=tagging, back_populates='photos')
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), index=True)
+
+    photos = db.relationship('Photo', secondary=tagging, back_populates='tags')
+
+@db.event.listens_for(Photo, 'after_delete', named=True)
+def delete_photos(**kwargs):
+    target = kwargs['target']
+    for filename in [target.filename, target.filename_s, target.filename_m]:
+        if filename is not None:
+            path = os.path.join(current_app.config['ALBUMY_UPLOAD_PATH'], filename)
+            if os.path.exists(path):
+                os.remove(path)

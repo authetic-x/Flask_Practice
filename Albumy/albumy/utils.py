@@ -56,3 +56,6 @@ def resize_image(image, filename, base_width):
     img.save(os.path.join(current_app.config['ALBUMY_UPLOAD_PATH'], filename),
              optimize=True, quality=85)
     return filename
+
+def flash_errors(form):
+    pass
