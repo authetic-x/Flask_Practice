@@ -13,7 +13,7 @@ from albumy.blueprints.ajax import ajax_bp
 from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail,\
                 dropzone, avatars
 from albumy.settings import config
-from albumy.models import User, Role
+from albumy.models import User, Role, Notification
 
 
 def create_app(config_name=None):
@@ -55,13 +55,16 @@ def register_shell_context(app):
     def make_shell_context():
         return dict(db=db)
 
-'''
+
 def register_template_context(app):
     @app.context_processor
     def make_template_context():
         if current_user.is_authenticated:
-            pass
-'''
+            notification_count = Notification.query.with_parent(current_user).filter_by(is_read=False).count()
+        else:
+            notification_count = None
+        return dict(notification_count=notification_count)
+
 
 def register_errorhandlers(app):
     pass

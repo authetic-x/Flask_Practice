@@ -44,6 +44,7 @@ class User(db.Model, UserMixin):
     avatar_s = db.Column(db.String(64))
     avatar_m = db.Column(db.String(64))
     avatar_l = db.Column(db.String(64))
+    avatar_raw = db.Column(db.String(64))
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     role = db.relationship('Role', back_populates='users')
@@ -53,6 +54,8 @@ class User(db.Model, UserMixin):
                                 'follower', lazy='dynamic', cascade='all')
     followers = db.relationship('Follow', foreign_keys=[Follow.followed_id], back_populates=
                                 'followed', lazy='dynamic', cascade='all')
+    notifications = db.relationship('Notification', back_populates='receiver',
+                                    cascade='all')
 
     def __init__(self, **kwargs):
         super(User, self).__init__()
@@ -191,6 +194,14 @@ class Collect(db.Model):
     collector = db.relationship('User', back_populates='collections', lazy='joined')
     collected = db.relationship('Photo', back_populates='collectors', lazy='joined')
 
+class Notification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.Text)
+    is_read = db.Column(db.Boolean, default=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    receiver = db.relationship('User', back_populates='notifications')
 
 @db.event.listens_for(Photo, 'after_delete', named=True)
 def delete_photos(**kwargs):

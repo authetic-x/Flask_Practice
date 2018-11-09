@@ -4,7 +4,10 @@ from flask_login import current_user, login_required
 
 from albumy.models import User, Photo, Collect
 from albumy.decorators import permission_required, confirm_required
-from albumy.utils import redirect_back
+from albumy.utils import redirect_back, flash_errors
+from albumy.notifications import push_follow_notification
+from albumy.forms.user import UploadAvatarForm, CropAvatarForm
+from albumy.extensions import avatars, db
 
 
 user_bp = Blueprint('user', __name__)
@@ -41,6 +44,7 @@ def follow(username):
         return redirect(url_for('.index', username=username))
     current_user.follow(user)
     flash('User followed.', 'success')
+    push_follow_notification(follower=current_user, receiver=user)
     return redirect_back()
 
 @user_bp.route('/unfollow/<username>', methods=['POST'])
@@ -71,3 +75,45 @@ def show_following(username):
     pagination = user.following.paginate(page, per_page)
     follows = pagination.items
     return render_template('user/following.html', user=user, pagination=pagination, follows=follows)
+
+@user_bp.route('/settings/avatar')
+@login_required
+@confirm_required
+def change_avatar():
+    upload_form = UploadAvatarForm()
+    crop_form = CropAvatarForm()
+    return render_template('user/settings/change_avatar.html', upload_form=upload_form,
+                           crop_form=crop_form)
+
+@user_bp.route('/settings/avatar/upload', methods=['POST'])
+@login_required
+@confirm_required
+def upload_avatar():
+    form = UploadAvatarForm()
+    if form.validate_on_submit():
+        image = form.image.data
+        filename = avatars.save_avatar(image)
+        current_user.avatar_raw = filename
+        db.session.commit()
+        flash('Image uploaded, please crop', 'success')
+    flash_errors(form)
+    return redirect(url_for('.change_avatar'))
+
+@user_bp.route('/settings/avatar/crop', methods=['POST'])
+@login_required
+@confirm_required
+def crop_avatar():
+    form = CropAvatarForm()
+    if form.validate_on_submit():
+        x = form.x.data
+        y = form.y.data
+        w = form.w.data
+        h = form.h.data
+        filenames = avatars.crop_avatar(current_user.avatar_raw, x, y, w, h)
+        current_user.avatar_s = filenames[0]
+        current_user.avatar_m = filenames[1]
+        current_user.avatar_l = filenames[2]
+        db.session.commit()
+        flash('Avatar updated.', 'success')
+    flash_errors(form)
+    return redirect(url_for('.change_avatar'))

@@ -8,7 +8,7 @@ from flask_login import login_required, current_user
 from flask_dropzone import random_filename
 
 from albumy.decorators import confirm_required, permission_required, admin_required
-from albumy.models import Photo, Tag, Collect, User
+from albumy.models import Photo, Tag, Collect, User, Notification
 from albumy.extensions import db
 from albumy.utils import resize_image, flash_errors
 from albumy.forms.main import DescriptionForm, TagForm
@@ -212,3 +212,36 @@ def show_collectors(photo_id):
     collects = pagination.items
     return render_template('main/collectors.html', collects=collects, photo=photo, pagination=pagination)
 
+@main_bp.route('/notifications')
+@login_required
+def show_notification():
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['ALBUMY_NOTIFICATION_PER_PAGE']
+    notifications = Notification.query.with_parent(current_user)
+    filter_rule = request.args.get('filter')
+    if filter_rule == 'unread':
+        notifications = notifications.filter_by(is_read=False)
+    pagination = notifications.order_by(Notification.timestamp.desc()).paginate(page, per_page)
+    notifications = pagination.items
+    return render_template('main/notifications.html', pagination=pagination, notifications=notifications)
+
+@main_bp.route('/notification/read/<int:notification_id>', methods=['POST'])
+@login_required
+def read_notification(notification_id):
+    notification = Notification.query.get_or_404(notification_id)
+    if current_user != notification.receiver:
+        abort(403)
+
+    notification.is_read = True
+    db.session.commit()
+    flash('Notification archived', 'success')
+    return redirect(url_for('.show_notifications'))
+
+@main_bp.route('/notifications/read/all', methods=['POST'])
+@login_required
+def read_all_notification():
+    for notification in current_user.notifications:
+        notification.is_read = True
+    db.session.commit()
+    flash('All notifications archived', 'success')
+    return redirect(url_for('.show_notifications'))
