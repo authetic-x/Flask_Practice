@@ -41,4 +41,5 @@ class Guest(AnonymousUserMixin):
     def can(self, permission_name):
         return False
 
+
 login_manager.anonymous_user = Guest

@@ -20,7 +20,7 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    if current_user.is_authenticate:
+    if current_user.is_authenticated:
         followed_photos = Photo.query.join(Follow, Follow.followed_id == Photo.author_id).\
                             filter(Follow.follower_id == current_user.id).order_by(Photo.timestamp.desc())
         page = request.args.get('page', 1, type=int)
@@ -120,7 +120,7 @@ def photo_previous(photo_id):
 @login_required
 def delete_photo(photo_id):
     photo = Photo.query.get_or_404(photo_id)
-    if current_user != photo.author:
+    if current_user != photo.author and not current_user.can('MODERATE'):
         abort(403)
 
     db.session.delete(photo)
