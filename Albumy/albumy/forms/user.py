@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms import StringField, SubmitField, TextAreaField, HiddenField
-from wtforms.validators import DataRequired, Length, Regexp, Optional, ValidationError
+from wtforms import StringField, SubmitField, TextAreaField, HiddenField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Length, Regexp, Optional, ValidationError, \
+                                EqualTo
 from flask_login import current_user
 
 from albumy.models import User
@@ -31,3 +32,28 @@ class CropAvatarForm(FlaskForm):
     w = HiddenField()
     h = HiddenField()
     submit = SubmitField('Crop and Update')
+
+class ChangePasswordForm(FlaskForm):
+    old_password = PasswordField('Old Password', validators=[DataRequired()])
+    password = PasswordField('New Password', validators=[DataRequired(), Length(8, 128),
+                                                         EqualTo('password2')])
+    password2 = PasswordField('Confirm Password', validators=[DataRequired()])
+    submit = SubmitField()
+
+class NotificationSettingForm(FlaskForm):
+    receive_comment_notification = BooleanField('New comment')
+    receive_follow_notification = BooleanField('New follower')
+    receive_collect_notification = BooleanField('New collector')
+    submit = SubmitField()
+
+class PrivacySettingForm(FlaskForm):
+    public_collections = BooleanField('Public my collection')
+    submit = SubmitField()
+
+class DeleteAccountForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(1, 20)])
+    submit = SubmitField()
+
+    def validate_username(self, field):
+        if field.data != current_user.username:
+            raise ValidationError('Wrong username')

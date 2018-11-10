@@ -6,7 +6,7 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_avatars import Identicon
 
-from albumy.extensions import db
+from albumy.extensions import db, whooshee
 
 
 # relationship table
@@ -30,6 +30,7 @@ class Follow(db.Model):
     followed = db.relationship('User', foreign_keys=[followed_id], back_populates='followers',
                                lazy='joined')
 
+@whooshee.register_model('username', 'name')
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     userName = db.Column(db.String(20), unique=True, index=True)
@@ -45,6 +46,10 @@ class User(db.Model, UserMixin):
     avatar_m = db.Column(db.String(64))
     avatar_l = db.Column(db.String(64))
     avatar_raw = db.Column(db.String(64))
+    receive_comment_notification = db.Column(db.Boolean, default=True)
+    receive_follow_notification = db.Column(db.Boolean, default=True)
+    receive_collect_notification = db.Column(db.Boolean, default=True)
+    show_collections = db.Column(db.Boolean, default=True)
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
     role = db.relationship('Role', back_populates='users')
@@ -166,6 +171,7 @@ class Permission(db.Model):
 
     roles = db.relationship('Role', secondary=roles_permissions, back_populates='permissions')
 
+@whooshee.register_model('description')
 class Photo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(500))
@@ -180,6 +186,7 @@ class Photo(db.Model):
     tags = db.relationship('Tag', secondary=tagging, back_populates='photos')
     collectors = db.relationship('Collect', back_populates='collected', cascade='all')
 
+@whooshee.register_model('name')
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), index=True)
@@ -209,5 +216,14 @@ def delete_photos(**kwargs):
     for filename in [target.filename, target.filename_s, target.filename_m]:
         if filename is not None:
             path = os.path.join(current_app.config['ALBUMY_UPLOAD_PATH'], filename)
+            if os.path.exists(path):
+                os.remove(path)
+
+@db.event.listens_for(User, 'after_delete', named=True)
+def delete_avatar(**kwargs):
+    target = kwargs['target']
+    for filename in [target.avatar_s, target.avatar_m, target.avatar_l, target.avatar.avatar_raw]:
+        if filename is not None:
+            path = os.path.join(current_app.config['AVATAR_SAVE_PATH'], filename)
             if os.path.exists(path):
                 os.remove(path)

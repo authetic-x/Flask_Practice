@@ -6,6 +6,7 @@ from flask_moment import Moment
 from flask_wtf import CSRFProtect
 from flask_dropzone import Dropzone
 from flask_avatars import Avatars
+from flask_whooshee import Whooshee
 
 
 db = SQLAlchemy()
@@ -16,6 +17,7 @@ moment = Moment()
 csrf = CSRFProtect()
 dropzone = Dropzone()
 avatars = Avatars()
+whooshee = Whooshee()
 
 
 @login_manager.user_loader
@@ -26,6 +28,9 @@ def load_user(user_id):
 
 login_manager.login_view = 'auth.login'
 login_manager.login_message_category = 'warning'
+
+login_manager.refresh_view = 'auth.re_authenticate'
+login_manager.needs_refresh_message_category = 'warning'
 
 
 class Guest(AnonymousUserMixin):

@@ -6,11 +6,12 @@ from flask import url_for, render_template, redirect, Blueprint, request, \
                     current_app, send_from_directory, flash, abort
 from flask_login import login_required, current_user
 from flask_dropzone import random_filename
+from sqlalchemy.sql.expression import func
 
 from albumy.decorators import confirm_required, permission_required, admin_required
-from albumy.models import Photo, Tag, Collect, User, Notification
+from albumy.models import Photo, Tag, Collect, User, Notification, Follow
 from albumy.extensions import db
-from albumy.utils import resize_image, flash_errors
+from albumy.utils import resize_image, flash_errors, redirect_back
 from albumy.forms.main import DescriptionForm, TagForm
 
 
@@ -19,8 +20,45 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/')
 def index():
-    return render_template('macros.html')
+    if current_user.is_authenticate:
+        followed_photos = Photo.query.join(Follow, Follow.followed_id == Photo.author_id).\
+                            filter(Follow.follower_id == current_user.id).order_by(Photo.timestamp.desc())
+        page = request.args.get('page', 1, type=int)
+        pagination = followed_photos.paginate(page, per_page=current_app.config['ALBUMY_PHOTO_PER_PAGE'])
+        photos = pagination.items
+    else:
+        pagination = None
+        photos = None
+    return render_template('main/index.html', pagination=pagination, photos=photos)
 
+@main_bp.route('/explore')
+def explore():
+    photos = Photo.query.order_by(func.random()).limit(12)
+    return render_template('main/explore.html', photos=photos)
+
+@main_bp.route('/about')
+def about():
+    pass
+
+@main_bp.route(('/search'))
+def search():
+    q = request.args.get('q', '')
+    if q == '':
+        flash('Enter keyword about photo, tag or user', 'warning')
+        return redirect_back()
+
+    category = request.args.get('category', 'photo')
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['ALBUMY_SEARCH_RESULT_PER_PAGE']
+    if category == 'user':
+        paginatiion = User.query.whooshee_search(q).paginate(page, per_page)
+    elif category == 'tag':
+        paginatiion = Tag.query.whooshee_search(q).paginate(page, per_page)
+    else:
+        paginatiion = Photo.query.whooshee_search(q).paginate(page, per_page)
+    results = paginatiion.items
+    return render_template('main/search.html', q=q, results=results,
+                           paginatiion=paginatiion, category=category)
 
 @main_bp.route('/upload', methods=['GTE', 'POST'])
 @login_required

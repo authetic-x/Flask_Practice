@@ -11,7 +11,7 @@ from albumy.blueprints.main import main_bp
 from albumy.blueprints.user import user_bp
 from albumy.blueprints.ajax import ajax_bp
 from albumy.extensions import db, moment, csrf, bootstrap, login_manager, mail,\
-                dropzone, avatars
+                dropzone, avatars, whooshee
 from albumy.settings import config
 from albumy.models import User, Role, Notification
 
@@ -43,6 +43,7 @@ def register_extensions(app):
     login_manager.init_app(app)
     dropzone.init_app(app)
     avatars.init_app(app)
+    whooshee.init_app(app)
 
 def register_blueprints(app):
     app.register_blueprint(main_bp)

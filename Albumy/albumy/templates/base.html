@@ -29,14 +29,15 @@
                         <a class="nav-link" href="{{ url_for('main.index') }}">Home <span class="sr-only">(current)</span></a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('main.index') }}">Explore</a>
+                        <a class="nav-link" href="{{ url_for('main.explore') }}">Explore</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link" href="#">About</a>
                       </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" action="{{ url_for('main.index') }}">
-                      <input class="form-control mr-sm-1" type="search" placeholder="Photo, tag or user" required aria-label="Search">
+                    <form class="form-inline my-2 my-lg-0" action="{{ url_for('main.search') }}">
+                      <input class="form-control mr-sm-1" type="search" name="q"
+                             placeholder="Photo, tag or user" required aria-label="Search">
                       <button class="btn btn-light my-2 my-sm-0" type="submit">
                         <span class="oi oi-magnifying-glass"></span>
                       </button>

@@ -1,12 +1,13 @@
 from flask import Blueprint, request, current_app, render_template, flash, \
                     redirect, url_for
-from flask_login import current_user, login_required
+from flask_login import current_user, login_required, fresh_login_required
 
 from albumy.models import User, Photo, Collect
 from albumy.decorators import permission_required, confirm_required
 from albumy.utils import redirect_back, flash_errors
 from albumy.notifications import push_follow_notification
-from albumy.forms.user import UploadAvatarForm, CropAvatarForm
+from albumy.forms.user import UploadAvatarForm, CropAvatarForm, ChangePasswordForm, \
+                                NotificationSettingForm, PrivacySettingForm, DeleteAccountForm
 from albumy.extensions import avatars, db
 
 
@@ -44,7 +45,8 @@ def follow(username):
         return redirect(url_for('.index', username=username))
     current_user.follow(user)
     flash('User followed.', 'success')
-    push_follow_notification(follower=current_user, receiver=user)
+    if user.receive_follow_notification:
+        push_follow_notification(follower=current_user, receiver=user)
     return redirect_back()
 
 @user_bp.route('/unfollow/<username>', methods=['POST'])
@@ -117,3 +119,53 @@ def crop_avatar():
         flash('Avatar updated.', 'success')
     flash_errors(form)
     return redirect(url_for('.change_avatar'))
+
+@user_bp.route('/settings/change-password', methods=['GET', 'POST'])
+@fresh_login_required
+def change_password():
+    form = ChangePasswordForm()
+    if form.validate_on_submit() and current_user.validate_password(form.password.data):
+        current_user.set_password(form.password.data)
+        db.session.commit()
+        flash('Password updated.', 'success')
+        return redirect(url_for('.index', username=current_user.username))
+    return render_template('user/settings/change_password.html', form=form)
+
+@user_bp.route('/settings/notification', method=['GET', 'POST'])
+@login_required
+def notification_setting():
+    form = NotificationSettingForm()
+    if form.validate_on_submit():
+        current_user.receive_comment_notification = form.receive_comment_notification.data
+        current_user.receive_follow_notification = form.receive_collect_notification.data
+        current_user.receive_collect_notification = form.receive_collect_notification.data
+        db.session.commit()
+        flash('Notification settings updated.', 'success')
+        return redirect(url_for('.index', username=current_user.username))
+    form.receive_comment_notification.data = current_user.receive_comment_notification
+    form.receive_collect_notification.data = current_user.receive_collect_notification
+    form.receive_follow_notification.data = current_user.receive_follow_notification
+    return render_template('user/settings/edit_notification.html', form=form)
+
+@user_bp.route('/settings/privacy', methods=['GET', 'POST'])
+@login_required
+def privacy_setting():
+    form = PrivacySettingForm()
+    if form.validate_on_submit():
+        current_user.show_collections = form.public_collections.data
+        db.session.commit()
+        flash('Privacy settings updated.', 'success')
+        return redirect(url_for('.index', username=current_user.username))
+    form.public_collections.data = current_user.show_collections
+    return render_template('user/settings/edit_privacy.html', form=form)
+
+@user_bp.route('/settings/account/delete', methods=['GET', 'POST'])
+@fresh_login_required
+def delete_account():
+    form = DeleteAccountForm()
+    if form.validate_on_submit():
+        db.session.delete(current_user)
+        db.session.commit()
+        flash('Your are free, goodbye!', 'success')
+        return redirect(url_for('main.index'))
+    return render_template('user/settings/delete_account.html', form=form)
