@@ -16,6 +16,7 @@ roles_permissions = db.Table(
     db.Column('permission_id', db.Integer, db.ForeignKey('permission.id'))
 )
 tagging = db.Table(
+    'tagging',
     db.Column('photo_id', db.Integer, db.ForeignKey('photo.id')),
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
 )
@@ -33,7 +34,7 @@ class Follow(db.Model):
 @whooshee.register_model('username', 'name')
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    userName = db.Column(db.String(20), unique=True, index=True)
+    username = db.Column(db.String(20), unique=True, index=True)
     email = db.Column(db.String(254), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     name = db.Column(db.String(30))
@@ -81,7 +82,7 @@ class User(db.Model, UserMixin):
 
     def generate_avatar(self):
         avatar = Identicon()
-        filenames = avatar.generate(text=self.userName)
+        filenames = avatar.generate(text=self.username)
         self.avatar_s = filenames[0]
         self.avatar_m = filenames[1]
         self.avatar_l = filenames[2]
@@ -139,7 +140,7 @@ class User(db.Model, UserMixin):
             db.session.commit()
 
     def is_collecting(self, photo):
-        return self.collections.filter_by(collected_id=photo.id).first() is not None
+        return Collect.query.with_parent(self).filter_by(collected_id=photo.id).first() is not None
 
     def lock(self):
         self.locked = True
@@ -233,6 +234,21 @@ class Notification(db.Model):
     receiver_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     receiver = db.relationship('User', back_populates='notifications')
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+    body = db.Column(db.Text)
+    flag = db.Column(db.Integer, default=0)
+
+    replied_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    photo_id = db.Column(db.Integer, db.ForeignKey('photo.id'))
+
+    photo = db.relationship('Photo', backref=db.backref('comments', cascade='all'))
+    author = db.relationship('User', backref=db.backref('comments', cascade='all'))
+    replies = db.relationship('Comment', back_populates='replied', cascade='all')
+    replied = db.relationship('Comment', back_populates='replies', remote_side=[id])
 
 @db.event.listens_for(Photo, 'after_delete', named=True)
 def delete_photos(**kwargs):

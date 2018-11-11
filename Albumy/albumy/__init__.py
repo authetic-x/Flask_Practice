@@ -49,7 +49,7 @@ def register_extensions(app):
 def register_blueprints(app):
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp, url_prefix='/auth')
-    #app.register_blueprint(user_bp, url_prefix='/user')
+    app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(ajax_bp, url_prefix='/ajax')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
@@ -98,11 +98,33 @@ def register_commands(app):
 
     @app.cli.command()
     @click.option('--user', default=10, help='Quantity of users, the default is 10.')
-    def forge(user):
+    @click.option('--follow', default=30, help='Quantity of follows, the default is 30.')
+    @click.option('--tag', default=20, help='Quantity of tags, the default is 20.')
+    @click.option('--photo', default=30, help='Quantity of photos, the default is 30.')
+    @click.option('--collect', default=20, help='Quantity of collects, the default is 20.')
+    @click.option('--comment', default=100, help='Quantity of comments, the default is 100.')
+    def forge(user, follow, tag, photo, collect, comment):
         """Generate fake data."""
 
-
+        from albumy.fakes import fake_admin, fake_user, fake_collect, fake_comment, fake_follow,\
+                                    fake_photo, fake_tag
 
         db.drop_all()
         db.create_all()
 
+        click.echo('Initializing the roles and permissions.')
+        Role.init_role()
+        click.echo('Initializing the admin.')
+        fake_admin()
+        click.echo('Initializing the %d users.' % user)
+        fake_user(user)
+        click.echo('Initializing the %d follows.' % follow)
+        fake_follow(follow)
+        click.echo('Initializing the %d tags.' % tag)
+        fake_tag(tag)
+        click.echo('Initializing the %d photos.' % photo)
+        fake_photo(photo)
+        click.echo('Initializing the %d collects.' % collect)
+        fake_collect(collect)
+        click.echo('Initializing the %d comments.' % comment)
+        fake_comment(comment)
