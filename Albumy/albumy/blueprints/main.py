@@ -60,7 +60,7 @@ def search():
     return render_template('main/search.html', q=q, results=results,
                            paginatiion=paginatiion, category=category)
 
-@main_bp.route('/upload', methods=['GTE', 'POST'])
+@main_bp.route('/upload', methods=['GET', 'POST'])
 @login_required
 @confirm_required
 @permission_required('UPLOAD')

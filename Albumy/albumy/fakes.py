@@ -21,6 +21,7 @@ def fake_admin():
         confirmed = True,
         website = 'https://github.com/authetic-x'
     )
+    admin.set_password('123456')
     notification = Notification(message='Welcome to Albumy!', receiver=admin)
     db.session.add(admin)
     db.session.add(notification)

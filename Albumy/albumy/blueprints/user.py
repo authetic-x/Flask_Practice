@@ -19,7 +19,7 @@ def index(username):
     user = User.query.filter_by(username=username).first_or_404()
     if user == current_user and user.locked:
         flash('Your account is locked.', 'danger')
-    if user == current_user and user.active:
+    if user == current_user and not user.active:
         logout_user()
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['ALBUMY_PHOTO_PER_PAGE']
@@ -27,6 +27,7 @@ def index(username):
                     .paginate(page, per_page)
     photos = pagination.items
     return render_template('user/index.html', user=user, pagination=pagination, photos=photos)
+
 
 @user_bp.route('/<username>/collections')
 def show_collections(username):
@@ -135,7 +136,7 @@ def change_password():
         return redirect(url_for('.index', username=current_user.username))
     return render_template('user/settings/change_password.html', form=form)
 
-@user_bp.route('/settings/notification', method=['GET', 'POST'])
+@user_bp.route('/settings/notification', methods=['GET', 'POST'])
 @login_required
 def notification_setting():
     form = NotificationSettingForm()
@@ -173,3 +174,4 @@ def delete_account():
         flash('Your are free, goodbye!', 'success')
         return redirect(url_for('main.index'))
     return render_template('user/settings/delete_account.html', form=form)
+    

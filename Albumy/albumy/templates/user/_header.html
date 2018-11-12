@@ -48,6 +48,7 @@
                 {% if current_user.is_admin %}
                     <a class="btn btn-warning btn-sm" href="{{ url_for('admin.edit_profile_admin',
                             user_id=user.id)}}">Edit Profile</a>
+                {% endif %}
             {% endif %}
         </div>
 
