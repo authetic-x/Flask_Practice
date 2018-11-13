@@ -14,7 +14,7 @@
             {% if current_user == user or user.show_collections %}
                 {% if collects %}
                 {% for collect in collects %}
-                photo_card(collect.collected)
+                    {{ photo_card(collect.collected) }}
                 {% endfor %}
                 {% else %}
                 <div class="tip">No Collections.</div>

@@ -254,14 +254,14 @@ def show_collectors(photo_id):
     photo = Photo.query.get_or_404(photo_id)
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['ALBUMY_USER_PER_PAGE']
-    pagination = Collect.query.with_parent(photo).order_by(Collect.timestamp.asc()).pagination(
+    pagination = Collect.query.with_parent(photo).order_by(Collect.timestamp.asc()).paginate(
                                                 page, per_page)
     collects = pagination.items
     return render_template('main/collectors.html', collects=collects, photo=photo, pagination=pagination)
 
 @main_bp.route('/notifications')
 @login_required
-def show_notification():
+def show_notifications():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['ALBUMY_NOTIFICATION_PER_PAGE']
     notifications = Notification.query.with_parent(current_user)
@@ -286,7 +286,7 @@ def read_notification(notification_id):
 
 @main_bp.route('/notifications/read/all', methods=['POST'])
 @login_required
-def read_all_notification():
+def read_all_notifications():
     for notification in current_user.notifications:
         notification.is_read = True
     db.session.commit()

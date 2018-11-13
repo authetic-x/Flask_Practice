@@ -45,7 +45,7 @@
                 </div>
                 <div class="navbar-nav ml-auto">
                     {% if current_user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{{ url_for('main.show_notification', filter=
+                        <a class="nav-item nav-link" href="{{ url_for('main.show_notifications', filter=
                                 'unread')}}">
                             <span class="oi oi-bell"></span>
                              <span id="notification-badge"

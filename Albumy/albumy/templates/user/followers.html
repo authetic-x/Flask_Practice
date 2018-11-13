@@ -27,6 +27,7 @@
     </div>
     {% if follows|length != 1 %}
         <div class="page-footer">
-            {{ render_pagination(pagination) }}
+            {{ render_pagination(pagination, align='center') }}
         </div>
+    {% endif %}
 {% endblock %}
