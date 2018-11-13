@@ -33,7 +33,11 @@ def login():
         flash('Invalid email or password', 'warning')
     return render_template('auth/login.html', form=form)
 
-
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('.login'))
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():

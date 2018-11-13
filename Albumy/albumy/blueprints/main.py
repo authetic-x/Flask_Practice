@@ -26,10 +26,11 @@ def index():
         page = request.args.get('page', 1, type=int)
         pagination = followed_photos.paginate(page, per_page=current_app.config['ALBUMY_PHOTO_PER_PAGE'])
         photos = pagination.items
+        tags = Tag.query.join(Tag.photos).group_by(Tag.id).order_by(func.count(Photo.id).desc()).limit(10)
     else:
         pagination = None
         photos = None
-    return render_template('main/index.html', pagination=pagination, photos=photos)
+    return render_template('main/index.html', pagination=pagination, photos=photos, tags=tags)
 
 @main_bp.route('/explore')
 def explore():
@@ -38,7 +39,7 @@ def explore():
 
 @main_bp.route('/about')
 def about():
-    pass
+    return render_template('main/about.html')
 
 @main_bp.route(('/search'))
 def search():
@@ -51,14 +52,14 @@ def search():
     page = request.args.get('page', 1, type=int)
     per_page = current_app.config['ALBUMY_SEARCH_RESULT_PER_PAGE']
     if category == 'user':
-        paginatiion = User.query.whooshee_search(q).paginate(page, per_page)
+        pagination = User.query.whooshee_search(q).paginate(page, per_page)
     elif category == 'tag':
-        paginatiion = Tag.query.whooshee_search(q).paginate(page, per_page)
+        pagination = Tag.query.whooshee_search(q).paginate(page, per_page)
     else:
-        paginatiion = Photo.query.whooshee_search(q).paginate(page, per_page)
-    results = paginatiion.items
+        pagination = Photo.query.whooshee_search(q).paginate(page, per_page)
+    results = pagination.items
     return render_template('main/search.html', q=q, results=results,
-                           paginatiion=paginatiion, category=category)
+                           pagination=pagination, category=category)
 
 @main_bp.route('/upload', methods=['GET', 'POST'])
 @login_required

@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{ url_for('main.explore') }}">Explore</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">About</a>
+                          <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
                       </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" action="{{ url_for('main.search') }}">
@@ -66,7 +66,7 @@
                                     <span class="oi oi-person"></span> My Home
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ url_for('user.privacy_setting') }}">
                                     <span class="oi oi-cog"></span> Settings
                                 </a>
                                 {% if current_user.can('MODERATE') %}
@@ -74,7 +74,7 @@
                                         <span class="oi oi-dashboard"></span> Dashboard
                                     </a>
                                 {% endif %}
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ url_for('auth.logout') }}">
                                     <span class="oi oi-power-standby"></span> Logout
                                 </a>
                             </div>

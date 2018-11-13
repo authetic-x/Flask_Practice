@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, SubmitField, TextAreaField, HiddenField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Regexp, Optional, ValidationError, \
-                                EqualTo
+                                EqualTo, Email
 from flask_login import current_user
 
 from albumy.models import User
@@ -57,3 +57,7 @@ class DeleteAccountForm(FlaskForm):
     def validate_username(self, field):
         if field.data != current_user.username:
             raise ValidationError('Wrong username')
+
+class ChangeEmailForm(FlaskForm):
+    email = StringField('New Email', validators=[DataRequired(), Length(1, 254), Email()])
+    submit = SubmitField()

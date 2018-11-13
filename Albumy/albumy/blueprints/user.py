@@ -4,11 +4,14 @@ from flask_login import current_user, login_required, fresh_login_required, logo
 
 from albumy.models import User, Photo, Collect
 from albumy.decorators import permission_required, confirm_required
-from albumy.utils import redirect_back, flash_errors
+from albumy.utils import redirect_back, flash_errors, generate_token
 from albumy.notifications import push_follow_notification
 from albumy.forms.user import UploadAvatarForm, CropAvatarForm, ChangePasswordForm, \
-                                NotificationSettingForm, PrivacySettingForm, DeleteAccountForm
+                                NotificationSettingForm, PrivacySettingForm, DeleteAccountForm, \
+                                EditProfileForm, ChangeEmailForm
 from albumy.extensions import avatars, db
+from albumy.emails import send_confirm_email
+from albumy.settings import Operations
 
 
 user_bp = Blueprint('user', __name__)
@@ -165,6 +168,7 @@ def privacy_setting():
     return render_template('user/settings/edit_privacy.html', form=form)
 
 @user_bp.route('/settings/account/delete', methods=['GET', 'POST'])
+@login_required
 @fresh_login_required
 def delete_account():
     form = DeleteAccountForm()
@@ -174,4 +178,35 @@ def delete_account():
         flash('Your are free, goodbye!', 'success')
         return redirect(url_for('main.index'))
     return render_template('user/settings/delete_account.html', form=form)
+
+@user_bp.route('/settings/edit-profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form = EditProfileForm()
+    if form.validate_on_submit():
+        current_user.name = form.name.data
+        current_user.username = form.username.data
+        current_user.bio = form.bio.data
+        current_user.website = form.website.data
+        current_user.location = form.location.data
+        db.session.commit()
+        flash('Profile updated.', 'success')
+        return redirect(url_for('.index', username=current_user.username))
+    form.name.data = current_user.name
+    form.username.data = current_user.username
+    form.bio.data = current_user.bio
+    form.website.data = current_user.website
+    form.location.data = current_user.location
+    return render_template('user/settings/edit_profile.html', form=form)
+
+@user_bp.route('/settings/change-email', methods=['GET', 'POST'])
+@login_required
+def change_email_request():
+    form = ChangeEmailForm()
+    if form.validate_on_submit():
+        token = generate_token(user=current_user, operation=Operations.CHANGE_EMAIL, new_email=form.email.data.lower())
+        send_confirm_email(to=form.email.data, user=current_user, token=token)
+        flash('Confirm email sent, check your inbox.', 'info')
+        return redirect(url_for('.index', username=current_user.username))
+    return render_template('user/settings/change_email.html', form=form)
     
