@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-3">
-        <img class="img-fluid rounded avatar-l" src="{{ url_for('main.get_avatar', filename=user.avatar_l) }}"
+        <img class="img-fluid rounded avatar-l" src="{{ url_for('main.get_avatar', filename=user.avatar_l) }}">
     </div>
 
     <div class="col-md-9">
@@ -22,9 +22,9 @@
             <a href="https://www.google.com/maps?q={{ user.location }}" target="_blank">
                 {{ user.location|truncate(20) }}
             </a>&nbsp;&nbsp;
+            {% endif %}
             <span class="oi oi-calendar"></span>
             Joined {{ moment(user.member_since).format('LL') }}
-            {% endif %}
         </p>
 
         <div>
@@ -51,18 +51,17 @@
                 {% endif %}
             {% endif %}
         </div>
-
     </div>
+</div>
     
-    <div class="user-nav">
-        <ul class="nav nav-tabs">
-            {{ render_nav_item('user.index', 'Photo', user.photos|length, username=user.username) }}
-            {{ render_nav_item('user.show_collections', 'Collections', user.collections|length,
-                    username=user.username)}}
-            {{ render_nav_item('user.show_following', 'Following', user.following.count() - 1,
-                    username=user.username) }}
-            {{ render_nav_item('user.show_followers', 'Followers', user.followers.count() - 1,
-                    username=user.username) }}
-        </ul>
-    </div>
+<div class="user-nav">
+    <ul class="nav nav-tabs">
+        {{ render_nav_item('user.index', 'Photo', user.photos|length, username=user.username) }}
+        {{ render_nav_item('user.show_collections', 'Collections', user.collections|length,
+                username=user.username)}}
+        {{ render_nav_item('user.show_following', 'Following', user.following.count() - 1,
+                username=user.username) }}
+        {{ render_nav_item('user.show_followers', 'Followers', user.followers.count() - 1,
+                username=user.username) }}
+    </ul>
 </div>

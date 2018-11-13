@@ -9,10 +9,10 @@ from flask_dropzone import random_filename
 from sqlalchemy.sql.expression import func
 
 from albumy.decorators import confirm_required, permission_required, admin_required
-from albumy.models import Photo, Tag, Collect, User, Notification, Follow
+from albumy.models import Photo, Tag, Collect, User, Notification, Follow, Comment
 from albumy.extensions import db
 from albumy.utils import resize_image, flash_errors, redirect_back
-from albumy.forms.main import DescriptionForm, TagForm
+from albumy.forms.main import DescriptionForm, TagForm, CommentForm
 
 
 main_bp = Blueprint('main', __name__)
@@ -92,9 +92,18 @@ def get_image(filename):
 @main_bp.route('/photo/<int:photo_id>')
 def show_photo(photo_id):
     photo = Photo.query.get_or_404(photo_id)
+    page = request.args.get('page', 1, type=int)
+    per_page = current_app.config['ALBUMY_COMMENT_PER_PAGE']
+    pagination = Comment.query.with_parent(photo).order_by(Comment.timestamp).paginate(page, per_page)
+    comments = pagination.items
+
     description_form = DescriptionForm()
+    comment_form = CommentForm()
+    tag_form = TagForm()
     description_form.description.data = photo.description
-    return render_template('main/photo.html', photo=photo, description_form=description_form)
+    return render_template('main/photo.html', photo=photo, description_form=description_form,
+                           comment_form=comment_form, pagination=pagination, comments=comments,
+                           tag_form=tag_form)
 
 @main_bp.route('/photo/n/<int:photo_id>')
 def photo_next(photo_id):
@@ -283,3 +292,51 @@ def read_all_notification():
     db.session.commit()
     flash('All notifications archived', 'success')
     return redirect(url_for('.show_notifications'))
+
+@main_bp.route('/delete/comment/<int:comment_id>')
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+
+    if current_user != comment.author and current_user != comment.photo.author \
+        and not current_user.can('MODERATE'):
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Comment deleted.', 'info')
+    return redirect(url_for('.show_photo', photo_id=comment.photo_id))
+
+@main_bp.route('/photo/<int:photo_id>/comment/new', methods=['POST'])
+@login_required
+def new_comment(photo_id):
+    photo = Photo.query.get_or_404(photo_id)
+    page = request.args.get('page', 1, type=int)
+    form = CommentForm()
+    if form.validate_on_submit():
+        body = form.body.data
+        author = current_user._get_current_object()
+        comment = Comment(body=body, author=author, photo=photo)
+
+        replied_id = request.args.get('reply')
+        if replied_id:
+            comment.replied = Comment.query.get_or_404(replied_id)
+
+        db.session.add(comment)
+        db.session.commit()
+        flash('Comment published.', 'success')
+    flash_errors(form)
+    return redirect(url_for('.show_photo', photo_id=photo_id, page=page))
+
+@main_bp.route('/report/comment<int:comment_id>')
+@login_required
+def report_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    return redirect(url_for('.show_photo', photo_id=comment.photo_id))
+
+@main_bp.route('/reply/comment/<int:comment_id>')
+@login_required
+def reply_comment(comment_id):
+    comment = Comment.query.get_or_404(comment_id)
+    return redirect(url_for('.show_photo', photo_id=comment.photo_id, reply=comment_id, author=comment.author.name)
+                    + '#comment-form')
+
