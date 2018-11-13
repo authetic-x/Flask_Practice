@@ -8,7 +8,9 @@ class DescriptionForm(FlaskForm):
     submit = SubmitField()
 
 class TagForm(FlaskForm):
-    tag = StringField('Add Tag')
+    tag = StringField('Add Tag (use space to separate)',
+                         validators=[Optional(), Length(0, 64)])
+    submit = SubmitField()
 
 class CommentForm(FlaskForm):
     body = TextAreaField('', validators=[DataRequired()])

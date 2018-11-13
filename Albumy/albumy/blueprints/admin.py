@@ -57,3 +57,8 @@ def edit_profile_admin(user_id):
     form.confirmed.data = user.confirmed
     form.active.data = user.active
     return render_template('admin/edit_profile.html', form=form, user=user)
+
+@admin_bp.route('/delete/tag/<int:tag_id>')
+@admin_required
+def delete_tag(tag_id):
+    pass

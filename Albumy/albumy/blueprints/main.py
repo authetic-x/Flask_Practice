@@ -331,6 +331,9 @@ def new_comment(photo_id):
 @login_required
 def report_comment(comment_id):
     comment = Comment.query.get_or_404(comment_id)
+    comment.flag += 1
+    db.session.commit()
+    flash('Comment reported.', 'success')
     return redirect(url_for('.show_photo', photo_id=comment.photo_id))
 
 @main_bp.route('/reply/comment/<int:comment_id>')

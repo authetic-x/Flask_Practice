@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dc34db2-bada-4f0d-8d95-9e1f08244d5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/albumy/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/blueprints/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/albumy/blueprints/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/blueprints/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/albumy/forms/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/forms/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albumy/templates/main/_comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/main/_comments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albumy/templates/main/photo.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/main/photo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albumy/templates/user/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/user/_header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/albumy/templates/user/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/user/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/data-dev.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whooshee/photo/_MAIN_691.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whooshee/user/_MAIN_1002.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/albumy/templates/main/tag.html" beforeDir="false" afterPath="$PROJECT_DIR$/albumy/templates/main/tag.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SayHello/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SayHello/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blueblog/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../blueblog/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blueblog/blueblog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blueblog/blueblog/__init__.py" afterDir="false" />
@@ -37,7 +31,7 @@
     <session id="-773622089">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="21" />
+          <entry key="project.closed" value="22" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
@@ -56,22 +50,22 @@
           <entry key="css" value="5" />
           <entry key="env" value="4" />
           <entry key="flaskenv" value="4" />
-          <entry key="html" value="87" />
+          <entry key="html" value="89" />
           <entry key="jpg" value="3" />
           <entry key="js" value="2" />
           <entry key="png" value="4" />
-          <entry key="py" value="100" />
+          <entry key="py" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="4" />
           <entry key="CSS" value="5" />
-          <entry key="HTML" value="87" />
+          <entry key="HTML" value="89" />
           <entry key="Image" value="7" />
           <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="5" />
-          <entry key="Python" value="100" />
+          <entry key="Python" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -79,16 +73,16 @@
           <entry key="confirm" value="29" />
           <entry key="env" value="186" />
           <entry key="flaskenv" value="60" />
-          <entry key="html" value="19921" />
-          <entry key="py" value="43237" />
+          <entry key="html" value="19938" />
+          <entry key="py" value="43409" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="186" />
-          <entry key="HTML" value="19921" />
+          <entry key="HTML" value="19938" />
           <entry key="PLAIN_TEXT" value="89" />
-          <entry key="Python" value="43237" />
+          <entry key="Python" value="43409" />
         </counts>
       </usages-collector>
     </session>
@@ -96,19 +90,51 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/albumy/templates/user/index.html">
+        <entry file="file://$PROJECT_DIR$/albumy/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="-792">
+              <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1541919070836" expanded="true" signature="1279:1284" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="3247:4481" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="3579:4481" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="3832:4003" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="4028:4194" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="4394:4481" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="4813:4846" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="5314:5487" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="6079:6084" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="7379:7384" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="8309:10057" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="8513:10057" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="8950:10057" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="9323:10057" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="10055:10057" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="10142:10147" ph="..." />
+                <marker date="1541919070836" expanded="true" signature="10521:10526" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/albumy/templates/main/photo.html">
+        <entry file="file://$PROJECT_DIR$/albumy/templates/main/tag.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-854">
-              <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+            <state relative-caret-position="199">
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/albumy/blueprints/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="321">
+              <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+              <folding>
+                <marker date="1542080993861" expanded="true" signature="2073:2083" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+            <state relative-caret-position="162">
+              <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -125,34 +151,34 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/albumy/blueprints/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="340" column="38" lean-forward="true" selection-start-line="340" selection-start-column="38" selection-end-line="340" selection-end-column="38" />
+            <state relative-caret-position="226">
+              <caret line="230" column="31" lean-forward="true" selection-start-line="230" selection-start-column="31" selection-end-line="230" selection-end-column="31" />
               <folding>
                 <element signature="e#16#25#0" expanded="true" />
-                <marker date="1542077896848" expanded="true" signature="1207:1212" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="1547:2335" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="2464:2469" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="3161:3166" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="3312:3317" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="3462:3467" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="4215:4220" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="4682:4687" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="5163:5168" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="6080:6085" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="6390:6395" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="6881:6886" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="7639:7644" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="8149:8154" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="8876:8881" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="9314:9596" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="9737:9742" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="10262:10267" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="10955:10960" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="11347:11352" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="11662:11667" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="12931:13004" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="13100:13307" ph="..." />
-                <marker date="1542077896848" expanded="true" signature="13100:13308" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="1207:1212" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="1547:2335" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="2464:2469" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="3161:3166" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="3312:3317" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="3462:3467" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="4215:4220" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="4682:4687" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="5163:5168" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="6080:6085" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="6390:6395" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="6881:6886" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="7639:7644" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="8149:8154" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="8876:8881" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="9314:9596" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="9737:9742" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="10262:10267" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="10955:10960" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="11347:11352" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="11662:11667" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="13019:13092" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="13188:13395" ph="..." />
+                <marker date="1542078406476" expanded="true" signature="13188:13396" ph="..." />
               </folding>
             </state>
           </provider>
@@ -201,7 +227,6 @@
         <option value="$PROJECT_DIR$/albumy/forms/auth.py" />
         <option value="$PROJECT_DIR$/albumy/templates/main/upload.html" />
         <option value="$PROJECT_DIR$/albumy/decorators.py" />
-        <option value="$PROJECT_DIR$/albumy/templates/main/tag.html" />
         <option value="$PROJECT_DIR$/albumy/templates/main/collectors.html" />
         <option value="$PROJECT_DIR$/albumy/templates/main/collections.html" />
         <option value="$PROJECT_DIR$/albumy/templates/user/following.html" />
@@ -223,7 +248,6 @@
         <option value="$PROJECT_DIR$/albumy/templates/main/explore.html" />
         <option value="$PROJECT_DIR$/albumy/templates/main/search.html" />
         <option value="$PROJECT_DIR$/albumy/forms/admin.py" />
-        <option value="$PROJECT_DIR$/albumy/blueprints/admin.py" />
         <option value="$PROJECT_DIR$/albumy/templates/admin/edit_profile.html" />
         <option value="$PROJECT_DIR$/albumy/extensions.py" />
         <option value="$PROJECT_DIR$/albumy/blueprints/ajax.py" />
@@ -238,12 +262,14 @@
         <option value="$PROJECT_DIR$/albumy/blueprints/user.py" />
         <option value="$PROJECT_DIR$/albumy/templates/user/index.html" />
         <option value="$PROJECT_DIR$/albumy/templates/user/_header.html" />
-        <option value="$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html" />
         <option value="$PROJECT_DIR$/albumy/templates/main/photo.html" />
         <option value="$PROJECT_DIR$/albumy/models.py" />
         <option value="$PROJECT_DIR$/albumy/templates/main/_comments.html" />
-        <option value="$PROJECT_DIR$/albumy/forms/main.py" />
         <option value="$PROJECT_DIR$/albumy/blueprints/main.py" />
+        <option value="$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html" />
+        <option value="$PROJECT_DIR$/albumy/forms/main.py" />
+        <option value="$PROJECT_DIR$/albumy/blueprints/admin.py" />
+        <option value="$PROJECT_DIR$/albumy/templates/main/tag.html" />
       </list>
     </option>
   </component>
@@ -427,7 +453,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21503638" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21503638" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -535,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/templates/main/tag.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="36" column="31" lean-forward="true" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/albumy/templates/main/explore.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -589,13 +608,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/uploads/avatars/ann20_m.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/blueprints/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="39" column="32" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/albumy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -728,40 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1886">
-          <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <marker date="1541919070836" expanded="true" signature="1279:1284" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="3247:4481" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="3579:4481" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="3832:4003" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="4028:4194" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="4394:4481" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="4813:4846" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="5314:5487" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="6079:6084" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="7379:7384" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="8309:10057" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="8513:10057" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="8950:10057" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="9323:10057" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="10055:10057" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="10142:10147" ph="..." />
-            <marker date="1541919070836" expanded="true" signature="10521:10526" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/templates/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/albumy/blueprints/auth.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -787,30 +765,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="57" column="14" lean-forward="true" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/albumy/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
           <folding>
             <element signature="e#1#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/albumy/forms/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <marker date="1542076095681" expanded="true" signature="412:417" ph="..." />
           </folding>
         </state>
       </provider>
@@ -836,36 +796,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/templates/user/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/forms/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1542080185459" expanded="true" signature="528:533" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-792">
+          <caret line="206" column="43" selection-start-line="206" selection-start-column="43" selection-end-line="206" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1541919070836" expanded="true" signature="1279:1284" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="3247:4481" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="3579:4481" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="3832:4003" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="4028:4194" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="4394:4481" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="4813:4846" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="5314:5487" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="6079:6084" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="7379:7384" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="8309:10057" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="8513:10057" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="8950:10057" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="9323:10057" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="10055:10057" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="10142:10147" ph="..." />
+            <marker date="1541919070836" expanded="true" signature="10521:10526" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/templates/main/tag.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/templates/main/_photo_sidebar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/albumy/blueprints/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+          <folding>
+            <marker date="1542080993861" expanded="true" signature="2073:2083" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/albumy/blueprints/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="340" column="38" lean-forward="true" selection-start-line="340" selection-start-column="38" selection-end-line="340" selection-end-column="38" />
+        <state relative-caret-position="226">
+          <caret line="230" column="31" lean-forward="true" selection-start-line="230" selection-start-column="31" selection-end-line="230" selection-end-column="31" />
           <folding>
             <element signature="e#16#25#0" expanded="true" />
-            <marker date="1542077896848" expanded="true" signature="1207:1212" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="1547:2335" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="2464:2469" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="3161:3166" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="3312:3317" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="3462:3467" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="4215:4220" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="4682:4687" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="5163:5168" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="6080:6085" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="6390:6395" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="6881:6886" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="7639:7644" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="8149:8154" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="8876:8881" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="9314:9596" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="9737:9742" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="10262:10267" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="10955:10960" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="11347:11352" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="11662:11667" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="12931:13004" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="13100:13307" ph="..." />
-            <marker date="1542077896848" expanded="true" signature="13100:13308" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="1207:1212" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="1547:2335" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="2464:2469" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="3161:3166" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="3312:3317" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="3462:3467" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="4215:4220" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="4682:4687" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="5163:5168" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="6080:6085" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="6390:6395" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="6881:6886" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="7639:7644" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="8149:8154" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="8876:8881" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="9314:9596" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="9737:9742" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="10262:10267" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="10955:10960" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="11347:11352" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="11662:11667" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="13019:13092" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="13188:13395" ph="..." />
+            <marker date="1542078406476" expanded="true" signature="13188:13396" ph="..." />
           </folding>
         </state>
       </provider>
