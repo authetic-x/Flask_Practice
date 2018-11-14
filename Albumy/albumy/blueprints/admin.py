@@ -1,13 +1,32 @@
 from flask import Blueprint, render_template, url_for, redirect, flash
+from flask_login import login_required
 
 from albumy.decorators import permission_required, admin_required
-from albumy.models import User, Role
+from albumy.models import User, Role, Photo, Comment, Tag
 from albumy.utils import redirect_back
 from albumy.forms.admin import EditProfileAdminForm
 from albumy.extensions import db
 
 
 admin_bp = Blueprint('admin', __name__)
+
+
+@admin_bp.route('/')
+@login_required
+@permission_required('MODERATE')
+def index():
+    user_count = User.query.count()
+    locked_user_count = User.query.filter_by(locked=True).count()
+    blocked_user_count = User.query.filter_by(active=False).count()
+    photo_count = Photo.query.count()
+    reported_photos_count = Photo.query.filter(Photo.flag > 0).count()
+    tag_count = Tag.query.count()
+    comment_count = Comment.query.count()
+    reported_comments_count = Comment.query.filter(Comment.flag > 0).count()
+    return render_template('admin/index.html', user_count=user_count, photo_count=photo_count,
+                           tag_count=tag_count, comment_count=comment_count, locked_user_count=locked_user_count,
+                           blocked_user_count=blocked_user_count, reported_comments_count=reported_comments_count,
+                           reported_photos_count=reported_photos_count)
 
 
 @admin_bp.route('/lock/user/<int:user_id>', methods=['POST'])
@@ -18,7 +37,7 @@ def lock_user(user_id):
     flash('Account locked', 'info')
     return redirect_back()
 
-@admin_bp.route('/unlock/user<int:user_id>')
+@admin_bp.route('/unlock/user<int:user_id>', methods=['POST'])
 @permission_required('MODERATE')
 def unlock_user(user_id):
     user = User.query.get_or_404(user_id)
