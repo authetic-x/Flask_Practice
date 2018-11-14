@@ -49,7 +49,6 @@ def register_blueprints(app):
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
 def register_shell_context(app):
-
     @app.shell_context_processor
     def make_shell_context():
         return dict(db=db)

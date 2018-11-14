@@ -8,12 +8,13 @@ Developing...
 
  - [x] Sayhello
  - [x]  Blueblog
- - [ ]  Albumy
- - [ ]  TODO
- - [ ]  Chat-online
+ - [x]  Albumy
+ - [ ]  Todoism
+ - [ ]  CatChat
  - [ ]  ...
 
 ##  项目地址
 
 - [SayHello](/SayHello/sayhello)
 - [BlueBlog](/blueblog/blueblog)
+- [Albumy](/Albumy/albumy)

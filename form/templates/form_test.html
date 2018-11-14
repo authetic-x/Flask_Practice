@@ -1,0 +1,7 @@
+{% extends 'bootstrap.html' %}
+
+{% block content %}
+    {{ form.crsf_token }}
+    {{ form.user.label }}
+    {{ form.user }}
+{% endblock %}

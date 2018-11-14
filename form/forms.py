@@ -37,3 +37,6 @@ class RegisterForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(), Length(8 ,128)])
     email = StringField('Email', validators=[DataRequired(), Length(1, 254)])
     submit2 = SubmitField('Register')
+
+class TestForm(FlaskForm):
+    user = StringField('username')

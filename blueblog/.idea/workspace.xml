@@ -5,15 +5,6 @@
       <change beforePath="$PROJECT_DIR$/../SayHello/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SayHello/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blueblog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/blueprints/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/blueprints/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/blueprints/blog.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/blueprints/blog.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/templates/blog/_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/templates/blog/_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/templates/blog/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/templates/blog/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/templates/blog/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/templates/blog/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blueblog/templates/blog/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/blueblog/templates/blog/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data-dev.db" beforeDir="false" afterPath="$PROJECT_DIR$/data-dev.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../email/.idea/email.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../email/.idea/email.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../email/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../email/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../email/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../email/.idea/workspace.xml" afterDir="false" />
@@ -51,37 +42,40 @@
     <session id="-1591541889">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
-          <entry key="project.open.time.10" value="3" />
+          <entry key="project.closed" value="19" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="4" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="2" />
-          <entry key="project.open.time.8" value="4" />
+          <entry key="project.open.time.8" value="6" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="env" value="2" />
-          <entry key="flaskenv" value="2" />
-          <entry key="html" value="54" />
+          <entry key="env" value="3" />
+          <entry key="flaskenv" value="3" />
+          <entry key="html" value="56" />
           <entry key="ico" value="1" />
           <entry key="js" value="2" />
-          <entry key="py" value="53" />
+          <entry key="py" value="57" />
           <entry key="sql" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key=".env file" value="2" />
+          <entry key=".env file" value="3" />
           <entry key="CSS" value="1" />
-          <entry key="HTML" value="54" />
+          <entry key="HTML" value="56" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="2" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="53" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="57" />
           <entry key="Scratch" value="2" />
         </counts>
       </usages-collector>
@@ -110,20 +104,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blueblog/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1551">
-              <caret line="150" column="27" lean-forward="true" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
+            <state relative-caret-position="432">
+              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-                <marker date="1540611437225" expanded="true" signature="498:503" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="914:919" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="954:959" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="1164:1316" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="1349:1354" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="1476:1481" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="1476:1918" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="1943:1944" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="2333:2596" ph="..." />
-                <marker date="1540611437225" expanded="true" signature="2590:2591" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="498:503" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="914:919" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="954:959" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="1164:1316" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="1348:1353" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="1475:1480" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="1475:1917" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="1942:1943" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="2332:2595" ph="..." />
+                <marker date="1540638744036" expanded="true" signature="2589:2590" ph="..." />
               </folding>
             </state>
           </provider>
@@ -132,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blueblog/blueprints/blog.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+            <state relative-caret-position="297">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding>
                 <element signature="e#0#120#0" expanded="true" />
                 <marker date="1540623446930" expanded="true" signature="711:716" ph="..." />
@@ -148,10 +142,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/settings.html">
+        <entry file="file://$PROJECT_DIR$/blueblog/templates/blog/category.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state relative-caret-position="243">
+              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.flaskenv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="27">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -159,8 +171,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blueblog/blueprints/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3807">
-              <caret line="141" column="38" lean-forward="true" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+            <state relative-caret-position="977">
+              <caret line="141" column="38" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
               <folding>
                 <element signature="e#0#114#0" expanded="true" />
                 <marker date="1540626423315" expanded="true" signature="469:474" ph="..." />
@@ -184,28 +196,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/edit_category.html">
+        <entry file="file://$PROJECT_DIR$/blueblog/extensions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/new_category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="405">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -213,7 +210,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blueblog/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
+            <state relative-caret-position="1485">
               <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -235,8 +232,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-663">
-              <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            <state relative-caret-position="351">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -244,8 +241,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blueblog/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+            <state relative-caret-position="270">
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
                 <marker date="1540621415271" expanded="true" signature="208:213" ph="..." />
@@ -291,7 +288,6 @@
         <option value="$PROJECT_DIR$/blueblog/templates/admin/new_post.html" />
         <option value="$PROJECT_DIR$/blueblog/templates/base.html" />
         <option value="$PROJECT_DIR$/blueblog/utils.py" />
-        <option value="$PROJECT_DIR$/blueblog/__init__.py" />
         <option value="$PROJECT_DIR$/blueblog/templates/blog/post.html" />
         <option value="$PROJECT_DIR$/blueblog/templates/admin/manage_comment.html" />
         <option value="$PROJECT_DIR$/blueblog/models.py" />
@@ -306,6 +302,7 @@
         <option value="$PROJECT_DIR$/blueblog/templates/admin/manage_category.html" />
         <option value="$PROJECT_DIR$/blueblog/forms.py" />
         <option value="$PROJECT_DIR$/blueblog/blueprints/admin.py" />
+        <option value="$PROJECT_DIR$/blueblog/__init__.py" />
       </list>
     </option>
   </component>
@@ -316,9 +313,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="949" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+    <option name="x" value="948" />
+    <option name="width" value="981" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -360,19 +357,6 @@
               <item name="blueblog" type="462c0819:PsiDirectoryNode" />
               <item name="blueprints" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="blueblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blueblog" type="462c0819:PsiDirectoryNode" />
-              <item name="blueblog" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blueblog" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blueblog" type="462c0819:PsiDirectoryNode" />
-              <item name="blueblog" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -384,9 +368,10 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SayHello" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -451,7 +436,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49822065" weight="0.45714286" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49822065" visible="true" weight="0.28860146" />
       <window_info id="Structure" order="1" sideWeight="0.5017794" side_tool="true" weight="0.18350849" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -465,7 +450,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3291815" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3291815" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.18327402" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.18294849" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3291815" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.3291815" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -538,32 +523,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.flaskenv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/blueprints/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/extensions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/templates/errors/400.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -590,14 +551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <marker date="1540473014191" expanded="true" signature="119:124" ph="..." />
-            <marker date="1540473014191" expanded="true" signature="733:738" ph="..." />
-            <marker date="1540473014191" expanded="true" signature="849:850" ph="..." />
-            <marker date="1540473014191" expanded="true" signature="849:855" ph="..." />
-            <marker date="1540473014191" expanded="true" signature="986:1135" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -619,20 +572,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="71" column="48" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/blog/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/blog/_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-55">
-          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -664,13 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/blueprints/auth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/new_post.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -685,37 +617,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_post.html">
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/edit_category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        <state relative-caret-position="216">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/new_category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_category.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/blueprints/auth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/blog/_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1551">
-          <caret line="150" column="27" lean-forward="true" selection-start-line="150" selection-start-column="27" selection-end-line="150" selection-end-column="27" />
+        <state relative-caret-position="432">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-            <marker date="1540611437225" expanded="true" signature="498:503" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="914:919" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="954:959" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="1164:1316" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="1349:1354" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="1476:1481" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="1476:1918" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="1943:1944" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="2333:2596" ph="..." />
-            <marker date="1540611437225" expanded="true" signature="2590:2591" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="498:503" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="914:919" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="954:959" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="1164:1316" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="1348:1353" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="1475:1480" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="1475:1917" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="1942:1943" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="2332:2595" ph="..." />
+            <marker date="1540638744036" expanded="true" signature="2589:2590" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/blueprints/blog.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="91" column="26" selection-start-line="91" selection-start-column="26" selection-end-line="91" selection-end-column="26" />
+        <state relative-caret-position="297">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
           <folding>
             <element signature="e#0#120#0" expanded="true" />
             <marker date="1540623446930" expanded="true" signature="711:716" ph="..." />
@@ -728,43 +695,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/models.py">
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/blog/category.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+        <state relative-caret-position="243">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.flaskenv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="28" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/extensions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
-            <marker date="1540621415271" expanded="true" signature="208:213" ph="..." />
-            <marker date="1540621415271" expanded="true" signature="737:742" ph="..." />
-            <marker date="1540621415271" expanded="true" signature="1634:1639" ph="..." />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/new_category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/settings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
+        <state relative-caret-position="1485">
           <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -782,17 +746,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/edit_category.html">
+    <entry file="file://$PROJECT_DIR$/blueblog/templates/admin/manage_post.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        <state relative-caret-position="351">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blueblog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+            <marker date="1540621415271" expanded="true" signature="208:213" ph="..." />
+            <marker date="1540621415271" expanded="true" signature="737:742" ph="..." />
+            <marker date="1540621415271" expanded="true" signature="1634:1639" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blueblog/blueprints/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3807">
-          <caret line="141" column="38" lean-forward="true" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
+        <state relative-caret-position="977">
+          <caret line="141" column="38" selection-start-line="141" selection-start-column="38" selection-end-line="141" selection-end-column="38" />
           <folding>
             <element signature="e#0#114#0" expanded="true" />
             <marker date="1540626423315" expanded="true" signature="469:474" ph="..." />

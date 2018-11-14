@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, redirect, url_for, \
     send_from_directory, session, request
 from forms import LoginForm, UploadForm, MultiUploadForm, RichTextForm, \
-    SigninForm, RegisterForm
+    SigninForm, RegisterForm, TestForm
 from wtforms import ValidationError
 from flask_wtf.csrf import validate_csrf
 from flask_ckeditor import CKEditor
@@ -21,6 +21,11 @@ ckeditor = CKEditor(app)
 @app.route('/')
 def index():
     return render_template('base.html')
+
+@app.route('/form')
+def mytest():
+    form = TestForm()
+    return render_template('form_test.html', form=form)
 
 @app.route('/basic')
 def basic():
