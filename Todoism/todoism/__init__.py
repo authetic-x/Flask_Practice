@@ -10,6 +10,7 @@ from todoism.blueprints.todo import todo_bp
 from todoism.extensions import babel, db, login_manager, csrf
 from todoism.settings import config
 from todoism.models import Item
+from todoism.apis.v1 import api_v1
 
 
 def create_app(config_name=None):
@@ -29,6 +30,7 @@ def register_blueprints(app):
     app.register_blueprint(home_bp)
     app.register_blueprint(auth_bp)
     app.register_blueprint(todo_bp)
+    app.register_blueprint(api_v1, url_prefix='/api/v1')
 
 def register_extensions(app):
     babel.init_app(app)
