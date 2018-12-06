@@ -12,6 +12,10 @@ home_bp = Blueprint('home', __name__)
 def index():
     return render_template('index.html')
 
+@home_bp.route('/intro')
+def intro():
+    return render_template('_intro.html')
+
 @home_bp.route('/set-locale/<locale>')
 def set_locale(locale):
     if locale not in current_app.config['TODOISM_LOCALES']:

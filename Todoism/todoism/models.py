@@ -14,6 +14,10 @@ class User(db.Model, UserMixin):
 
     items = db.relationship('Item', backref='author', cascade='all')
 
+    def __init__(self, username):
+        super.__init__(self)
+        self.username = username
+
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

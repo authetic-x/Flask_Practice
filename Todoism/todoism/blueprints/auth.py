@@ -1,5 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template, redirect, url_for, \
+                        request
 from faker import Faker
+from flask_login import login_user, logout_user, login_required, current_user
 
 from todoism.models import User, Item
 from todoism.extensions import db
@@ -7,6 +9,29 @@ from todoism.extensions import db
 
 auth_bp = Blueprint('auth', __name__)
 fake = Faker()
+
+@auth_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('todo.app'))
+    if request.method == 'POST':
+        data = request.get_json()
+        username = data['username']
+        password = data['password']
+
+        user = User.query.filter_by(username=username).first()
+
+        if user is not None and user.validate_password(password):
+            login_user(user)
+            return jsonify(message=('login success'))
+        return jsonify(message=('Invalid username or password')), 400
+    return render_template('_login.html')
+
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return jsonify(message=('Logout success.'))
 
 @auth_bp.route('/register')
 def register():

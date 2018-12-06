@@ -6,7 +6,7 @@ $(document).on('ready', function () {
     function new_item(e) {
         var $input = $('#item-input');
         var value = $input.val().trim();
-        if (e.which != ENTER_KEY || !value) {
+        if (e.which !== ENTER_KEY || !value) {
             return;
         }
         $input.focus().val('');
@@ -47,9 +47,9 @@ $(document).on('ready', function () {
 
     if (window.location.hash === '') {
         window.location.hash = '#intro';
-    } else {
-        $(window).trigger("hashchange");
+
     }
+    $(window).trigger("hashchange");
 
     function register() {
         $.ajax({
@@ -64,4 +64,12 @@ $(document).on('ready', function () {
     }
 
     $(document).on('click', '#register-btn', register);
+    
+    function activeM() {
+        
+    }
+    
+    function refresh_count() {
+        
+    }
 });
