@@ -1,0 +1,35 @@
+<nav class="blue lighten-2">
+    <div class="nav-wrapper container">
+        <a href="#" id="nav-logo" class="brand-logo">Todoism</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">About</a></li>
+            {% if current_user.is_authenticated %}
+                <li>
+                    <a class="waves-effect waves-light btn green" href="#">
+                        Jack
+                        <span class="badge new">3 left</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="waves-effect waves-light" data-href="#">
+                        <i class="material-icons">power_settings_new</i>
+                    </a>
+                </li>
+            {% else %}
+                <li><a class="waves-effect waves-light btn orange accent-2">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="center">
+    <hr>
+    <small> &copy; 2018 <a class="blue-text link" href="http://authetic-x.github.io" title="Written by authetic">authetic</a> -
+        <a class="blue-text link" href="https://github.com/authetic-x" title="Fork me on GitHub">GitHub</a> -
+        <a class="blue-text link" href="http://github.com/authetic-x" title="A HelloFlask project">BlueTodoism</a>
+    </small>
+</footer>
