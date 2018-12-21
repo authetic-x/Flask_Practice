@@ -9,6 +9,8 @@ verify_ssl = true
 flask = "*"
 python-dotenv = "*"
 flask-login = "*"
+flask-sqlalchemy = "*"
+faker = "*"
 
 [requires]
 python_version = "3.7"

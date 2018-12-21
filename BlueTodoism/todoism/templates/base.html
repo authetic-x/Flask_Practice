@@ -5,18 +5,19 @@
             <li><a href="#">About</a></li>
             {% if current_user.is_authenticated %}
                 <li>
-                    <a class="waves-effect waves-light btn green" href="#">
-                        Jack
+                    <a class="waves-effect waves-light btn green" href="#app">
+                        {{ current_user.username }}
                         <span class="badge new">3 left</span>
                     </a>
                 </li>
                 <li>
-                    <a class="waves-effect waves-light" data-href="#">
+                    <a class="waves-effect waves-light" data-href="{{ url_for('auth.logout') }}">
                         <i class="material-icons">power_settings_new</i>
                     </a>
                 </li>
             {% else %}
-                <li><a class="waves-effect waves-light btn orange accent-2">Login</a></li>
+                <li><a class="waves-effect waves-light btn red"
+                 href="#login">Login</a></li>
             {% endif %}
         </ul>
     </div>

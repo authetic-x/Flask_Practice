@@ -1,7 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
 <header class="row">
     <div class="input-field col s12">
-        <input id="password" type="text" class="validate">
-        <label for="password">What do you want to do?</label>
+        <input id="item-input" type="text" class="validate">
+        <label for="item-input">What do you want to do?</label>
     </div>
 </header>
 
@@ -25,3 +28,10 @@
         </a>
     </div>
 </div>
+
+<div class="items">
+    {% for item in items %}
+        {% include '_item.html' %}
+    {% endfor %}
+</div>
+{% endblock %}
