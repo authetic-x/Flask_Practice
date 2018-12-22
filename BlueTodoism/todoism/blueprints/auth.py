@@ -14,7 +14,7 @@ fake = Faker()
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for(''))
+        return redirect(url_for('todo.app'))
 
     if request.method == 'POST':
         data = request.get_json()
@@ -32,7 +32,7 @@ def login():
 @auth_bp.route('/register')
 def register():
     username = fake.user_name()
-    while User.query.filter_by(username=username) is not None:
+    while User.query.filter_by(username=username).first() is not None:
         username = fake.user_name()
     password = fake.word()
     user = User(username=username)

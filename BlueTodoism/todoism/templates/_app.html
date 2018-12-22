@@ -8,17 +8,20 @@
     </div>
 </header>
 
-<div class="row">
+<div class="row" id="dashboard">
     <div class="col l9 m12 s12">
         <ul class="tabs">
             <li class="tab col m4 s12">
-                <a class="blue-text button">All</a>
+                <a class="blue-text button" id="all_item">All
+                <span class="grey-text small-text" id="all_count">{{ all_count }}</span></a>
             </li>
             <li class="tab col m4 s12">
-                <a class="blue-text button">Active</a>
+                <a class="blue-text button" id="active_item">Active
+                <span class="grey-text small-text" id="active_count">{{ active_count }}</span></a>
             </li>
             <li class="tab col m4 s12">
-                <a class="blue-text button">Done</a>
+                <a class="blue-text button" id="done_item">Done
+                <span class="grey-text small-text" id="completed_count">{{ completed_count }}</span></a>
             </li>
         </ul>
     </div>
