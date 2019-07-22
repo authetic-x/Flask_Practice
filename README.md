@@ -7,11 +7,11 @@ Developing...
 ##  Projects
 
  - [x] Sayhello
- - [x]  Blueblog
- - [x]  Albumy
- - [ ]  Todoism
- - [ ]  CatChat
- - [ ]  ...
+ - [x] Blueblog
+ - [x] Albumy
+ - [ ] Todoism
+ - [ ] CatChat
+ - [ ] ...
 
 ##  项目地址
 
